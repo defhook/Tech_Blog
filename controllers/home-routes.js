@@ -38,4 +38,20 @@ router.get('/', (req, res) => {
         });
 });
 
+//redirect to the login page 
+router.get('/login', (req, res) => {
+    if(req.session.loggedIn){
+        res.redirect("/"); //take the logged in user to homepage page 
+        return ;
+    }
+    res.render('login');
+}); 
+//register new user here 
+router.get('/signup', (req, res) => {
+    if(req.session.loggedIn){
+        res.redirect("/"); //take the logged in user to homepage page 
+        return ;
+    }
+    res.render('signup');
+});
 module.exports = router;

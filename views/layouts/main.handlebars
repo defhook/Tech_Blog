@@ -1,32 +1,35 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Tech Blog</title>
-    <link rel="stylesheet" href="/public/css/style.css">
-</head>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<body>
+  <body>
     <div class="wrapper">
-        <header>
-            <h1>
-                <a href="/">The Tech Blog</a>
-            </h1>
-            <nav>
-                <button id="logout" class="btn-no-style">logout</button>
-                <a href="/login">login</a>
-            </nav>
-        </header>
-        <main>
-            {{{ body }}}
-        </main>
-        <footer>
-            Thanks for making this the #1 Tech Blog site!
-        </footer>
+      <header>
+        <h1>
+          <a href="/">The Tech Blog</a>
+        </h1>
+        <nav>
+            <a href="/dashboard">Your Dashboard</a>
+          {{!-- {{#if req.session.loggedIn --}}
+            <button id="logout" class="btn-no-style">logout</button>
+          {{!-- {{else --}}
+            <a href="/login">login</a>
+          {{!-- {{/if --}}
+        </nav>
+      </header>
+      <main>
+        {{{body}}}
+      </main>
+      <footer>
+        Thanks for making this the #1 Tech Blog site!
+      </footer>
     </div>
 
-</body>
+  </body>
 
 </html>
