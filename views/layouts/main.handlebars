@@ -1,5 +1,32 @@
-<h1>Tech Blog</h1>
-<section>
+<!DOCTYPE html>
+<html lang="en">
 
-    <h2>View All Blogs</h2>
-</section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tech Blog</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>
+                <a href="/">The Tech Blog</a>
+            </h1>
+            <nav>
+                <button id="logout" class="btn-no-style">logout</button>
+                <a href="/login">login</a>
+            </nav>
+        </header>
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+            Thanks for making this the #1 Tech Blog site!
+        </footer>
+    </div>
+
+</body>
+
+</html>
