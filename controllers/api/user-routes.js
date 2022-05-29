@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const req = require("express/lib/request");
+const { Post, User, Comment } = require("../../models");
 
 // get all users
 router.get("/", (req, res) => {
@@ -55,11 +56,8 @@ router.post("/", (req, res) => {
     password: req.body.password,
   })
     .then((dbUserData) => {
-
       //save session details
       req.session.save(() => {
-    console.log("New user", req.session.user_id);
-
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
@@ -92,8 +90,7 @@ router.post("/login", (req, res) => {
       res.status(400).json({ message: "Incorrect password!" });
       return;
     }
-    console.log("returning user", req.session.user_id);
-     //save session details 
+    
      req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
@@ -102,6 +99,17 @@ router.post("/login", (req, res) => {
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
   });
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
 });
 
 router.put("/:id", (req, res) => {
@@ -145,15 +153,5 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-router.post('/logout', (req, res) => {
-  console.log("logout route"); 
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  }
-  else {
-    res.status(404).end();
-  }
-});
+
 module.exports = router;
