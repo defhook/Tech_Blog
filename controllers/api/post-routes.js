@@ -71,6 +71,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     // expects {title: 'Tech_Blog goes public!'}
+    console.log("New post ", req.body)
     Post.create({
         title: req.body.title,
         post_url: req.body.post_url,

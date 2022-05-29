@@ -29,7 +29,7 @@ const { User, Post, Comment } = require('../models');
             }
         ], 
         where: {
-            user_id: req.session.user.id
+            user_id: req.session.user_id
         }
     })
         .then(dbPostData => {

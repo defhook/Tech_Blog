@@ -55,14 +55,17 @@ router.post("/", (req, res) => {
     password: req.body.password,
   })
     .then((dbUserData) => {
+
       //save session details
-    //   req.session.save(() => {
-    //     req.session.user.id = dbUserData.id;
-    //     req.session.user.name = dbUserData.username;
-    //     req.session.loggedIn = true; 
-        
+      req.session.save(() => {
+    console.log("New user", req.session.user_id);
+
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+  
         res.json(dbUserData);
-      //});
+      });
     
     })
     .catch((err) => {
@@ -89,16 +92,15 @@ router.post("/login", (req, res) => {
       res.status(400).json({ message: "Incorrect password!" });
       return;
     }
-
+    console.log("returning user", req.session.user_id);
      //save session details 
-     req.session.save(()=>{
-        req.session.user.id = dbUserData.id; 
-        req.session.user.name = dbUserData.username; 
-        req.session.loggedIn = true; 
-
-    }); 
-    res.json({ user: dbUserData, message: "You are now logged in!" });
-
+     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+  
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
   });
 });
 
@@ -143,4 +145,15 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+router.post('/logout', (req, res) => {
+  console.log("logout route"); 
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 module.exports = router;
