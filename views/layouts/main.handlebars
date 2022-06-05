@@ -15,7 +15,7 @@
         </h1>
         <nav>
           <a href="/dashboard">Your Dashboard</a>
-          {{#if req.session.loggedIn}}
+          {{#if loggedIn}}
             <button id="logout" class="btn-no-style">logout</button>
           {{else}}
             <a href="/login">login</a>
@@ -30,7 +30,7 @@
       </footer>
     </div>
 
-    {{#if req.session.loggedIn}}
+    {{#if loggedIn}}
       <script src="/js/logout.js"></script>
     {{/if}}
   </body>
