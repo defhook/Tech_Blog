@@ -22,5 +22,5 @@ Made by Alvin Badillo🙉
 ![Tech Blog](/public/images/techblog.png)
 
 ## Deployed Site
-![Tech Blog](https://ancient-inlet-86543.herokuapp.com/)
+[Tech Blog!](https://ancient-inlet-86543.herokuapp.com/)
 
