@@ -19,5 +19,8 @@ Clone the SSH file and then run 'npm i' from the console to install the npm depe
 Made by Alvin Badillo🙉
 
 ## Screenshot
+![Tech Blog](/public/images/techblog.png)
 
+## Deployed Site
+![Tech Blog](https://ancient-inlet-86543.herokuapp.com/)
 
